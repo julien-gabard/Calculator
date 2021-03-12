@@ -70,6 +70,8 @@ let app = {
       if (app.display === '') {
         app.display = '0';
       }
+
+      app.result = '';
     }
 
     // Check if the button press is 0-9 or .
