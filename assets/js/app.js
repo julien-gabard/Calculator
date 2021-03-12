@@ -120,7 +120,7 @@ let app = {
   },
 
   /**
-   * Method for performing an action based on the button clicked.
+   * Method to perform an action based on the equal button.
    */
   calculate: () => {
     
