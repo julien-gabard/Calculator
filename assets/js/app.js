@@ -66,6 +66,17 @@ let app = {
     }
 
     // Check if the button press is 0-9 or .
+    if (parseFloat(button) >= 0 || button === '.') {
+
+      if (app.display === '0' && button === '.') {
+        
+        app.display = '0.';
+
+      } else if (!app.display.includes('.') || parseFloat(button) >= 0) {
+
+        app.display = app.display === '0' ? button : app.display + button;
+      }
+    }
 
     // Check if the button press is + or - or x or ÷ or %
 
