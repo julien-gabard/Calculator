@@ -1,6 +1,8 @@
 let app = {
 
   display: '0',
+  calc: '0',
+  result: '',
 
   /**
    * Method executed when launching the application. ( constructor )
@@ -22,6 +24,7 @@ let app = {
     
     app.buttonClickManagement(evt);
     app.displayCurrentOperation();
+    app.displayResult();
   },
 
   /**
@@ -38,7 +41,10 @@ let app = {
    * Method to display result.
    */
   displayResult: () => {
-    // TODO
+
+    const outputResultElement = document.getElementById('output_result');
+
+    outputResultElement.innerText = app.result;
   },
 
   /**
@@ -53,6 +59,7 @@ let app = {
     // Check if the button press is AC
     if (button === 'AC') {
       app.display = '0';
+      app.result = '';
     }
 
     // Check if the button press is C
@@ -79,23 +86,40 @@ let app = {
     }
 
     // Check if the button press is + or - or x or ÷ or %
-    if (button === '+' || button === '-' || button === 'x' || button === '÷' || button === '%') {
-      
-      app.calculate(button);
+    if (button === '+' || button === '-' || button === 'x' || button === '÷') {
+
+      if (!app.display.includes('+') && !app.display.includes('-') && !app.display.includes('x') && !app.display.includes('÷')) {
+
+        app.display = app.display + button;
+      }
     }
 
     // Check if the button press is =
     if (button === '=') {
-      app.displayResult();
+
+      app.calculate();
     }
   },
 
   /**
    * Method for performing an action based on the button clicked.
-   * @param {string} button
    */
-  calculate: (button) => {
-    // TODO
+  calculate: () => {
+    
+    if (app.display.includes('÷')) {
+
+      app.calc = app.display.replace('÷', '/');
+
+    } else if (app.display.includes('x')) {
+
+      app.calc = app.display.replace('x', '*');
+
+    } else {
+
+      app.calc = app.display;
+    }
+
+    app.result = eval(app.calc);
   }
 }
 
