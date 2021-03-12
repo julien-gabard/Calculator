@@ -102,8 +102,12 @@ let app = {
     // Check if the button press is + or - or x or ÷ or %
     if (button === '+' || button === '-' || button === 'x' || button === '÷') {
 
-      if (!app.display.includes('+') && !app.display.includes('-') && !app.display.includes('x') && !app.display.includes('÷')) {
+      if (app.result !== '') {
+        app.display = app.result + button;
+        app.result = '';
+      }
 
+      if (!app.display.includes('+') && !app.display.includes('-') && !app.display.includes('x') && !app.display.includes('÷')) {
         app.display = app.display + button;
       }
     }
