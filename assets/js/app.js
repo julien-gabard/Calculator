@@ -51,6 +51,9 @@ let app = {
     const button = target.innerText;
 
     // Check if the button press is AC
+    if (button === 'AC') {
+      app.display = '0';
+    }
 
     // Check if the button press is C
 
