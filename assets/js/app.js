@@ -3,6 +3,12 @@ let app = {
   display: '0',
   calc: '0',
   result: '',
+  operators: [
+    '+',
+    '-',
+    'x',
+    '÷'
+  ],
 
   /**
    * Method executed when launching the application. ( constructor )
@@ -31,10 +37,16 @@ let app = {
    * Method to display current operation.
    */
   displayCurrentOperation: () => {
-    
-    const outputElement = document.getElementById('output_current');
 
-    outputElement.innerText = app.display;
+    const outputElement = document.getElementById('output_current');
+    
+    for (operator of app.operators) {
+      if (app.display.includes(operator)) {
+        var addSpaceOperator = app.display.replace(operator, ` ${operator} `);
+      }
+    }
+
+    outputElement.innerText = addSpaceOperator ? addSpaceOperator : app.display;
   },
 
   /**
