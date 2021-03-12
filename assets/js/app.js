@@ -79,8 +79,15 @@ let app = {
     }
 
     // Check if the button press is + or - or x or ÷ or %
+    if (button === '+' || button === '-' || button === 'x' || button === '÷' || button === '%') {
+      
+      app.calculate(button);
+    }
 
     // Check if the button press is =
+    if (button === '=') {
+      app.displayResult();
+    }
   },
 
   /**
