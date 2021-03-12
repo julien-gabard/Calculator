@@ -56,6 +56,14 @@ let app = {
     }
 
     // Check if the button press is C
+    if (button === 'C') {
+
+      app.display = app.display.substring(0, app.display.length -1);
+
+      if (app.display === '') {
+        app.display = '0';
+      }
+    }
 
     // Check if the button press is 0-9 or .
 
