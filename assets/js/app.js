@@ -47,6 +47,18 @@ let app = {
    */
   buttonClickManagement: (evt) => {
 
+    const { target } = evt;
+    const button = target.innerText;
+
+    // Check if the button press is AC
+
+    // Check if the button press is C
+
+    // Check if the button press is 0-9 or .
+
+    // Check if the button press is + or - or x or ÷ or %
+
+    // Check if the button press is =
   },
 
   /**
