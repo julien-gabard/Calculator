@@ -7,6 +7,11 @@ let app = {
    */
   init: () => {
 
+    const allButton = document.querySelectorAll('button');
+
+    for(const button of allButton) {
+      button.addEventListener('click', app.playButtonAndRefreshDisplay);
+    }
   },
 
   /**
@@ -14,14 +19,19 @@ let app = {
    * @param {event} evt 
    */
   playButtonAndRefreshDisplay: (evt) => {
-    // TODO
+    
+    app.buttonClickManagement(evt);
+    app.displayCurrentOperation();
   },
 
   /**
    * Method to display current operation.
    */
   displayCurrentOperation: () => {
-    // TODO
+    
+    const outputElement = document.getElementById('output_current');
+
+    outputElement.innerText = app.display;
   },
 
   /**
