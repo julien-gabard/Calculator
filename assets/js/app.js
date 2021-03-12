@@ -89,6 +89,11 @@ let app = {
     // Check if the button press is 0-9 or .
     if (parseFloat(button) >= 0 || button === '.') {
 
+      if (app.result !== '') {
+        app.display = '0';
+        app.result = '';
+      }
+
       if (app.display === '0' && button === '.') {
         
         app.display = '0.';
