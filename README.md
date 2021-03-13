@@ -1,6 +1,6 @@
 # Calculator (en cours)
 
-<img src="./calculator.png" alt="calculator.png" width="200px"/>
+<img src="./calc.png" alt="calc.png" width="200px"/>
 
 Réalisé en : 
 - **HTML**
