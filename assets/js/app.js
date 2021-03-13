@@ -84,13 +84,10 @@ let app = {
     // Check if the button press is + or - or x or ÷
     if (button === '+' || button === '-' || button === 'x' || button === '÷') {
       
-      if (!app.current.includes('+') && !app.current.includes('-') && !app.current.includes('x') && !app.current.includes('÷')) {
-
-        app.previous = `${app.result ? app.result : app.current !== '' ? app.current : parseFloat(app.previous)} ${button}`;
-        app.operation = button;
-        app.current = '';
-        app.result = '';
-      }
+      app.previous = `${app.result ? app.result : app.current !== '' ? app.current : parseFloat(app.previous)} ${button}`;
+      app.operation = button;
+      app.current = '';
+      app.result = '';
     }
 
     // Check if the button press is %
