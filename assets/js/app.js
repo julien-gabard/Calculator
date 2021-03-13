@@ -115,7 +115,7 @@ let app = {
    */
   calculate: () => {
     let number1 = parseFloat(app.previous);
-    let number2 = Number(app.current);
+    let number2 = parseFloat(app.current);
 
     if (app.operation === '+') {
 
