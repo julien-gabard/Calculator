@@ -34,7 +34,7 @@ let app = {
   displayCurrent: () => {
     const outputCurrentElement = document.getElementById('output_current');
 
-    outputCurrentElement.innerText = app.result !== '' ? app.result : app.current;
+    outputCurrentElement.innerText = app.result === '' ? app.current : app.result;
   },
 
   /**
@@ -109,7 +109,7 @@ let app = {
 
     // Check if the button press is =
     if (button === '=') {
-      app.previous = `${app.previous} ${app.current}`;
+      app.previous = `${app.previous} ${app.current} =`;
       app.calculate();
     }
   },
