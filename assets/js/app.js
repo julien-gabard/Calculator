@@ -97,7 +97,18 @@ let app = {
 
     // Check if the button press is +/-
     if (button === '+/-') {
-      // TODO
+      
+      if (app.current) {
+
+        if (!app.current.includes('-', 0)) {
+
+          app.current = `-${app.current}`;
+
+        } else if (app.current.includes('-', 0)) {
+
+          app.current = app.current.substring(1);
+        }
+      }
     }
 
     // Check if the button press is =

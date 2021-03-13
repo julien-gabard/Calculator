@@ -14,5 +14,3 @@ Pour la compilation, j'effectue la commande suivante : `./dart-sass/sass assets/
 
 
 PS : pour l'instant, le projet n'est pas responcive, car je me concentre sur les fonctionnalités. Mes, je prévois de le rendre responcive à la fin.
-
-PS2 : La calculatrice est entièrement fonctionnelle mes, il manque encore la gestion du bouton +/-
