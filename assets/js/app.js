@@ -45,8 +45,6 @@ let app = {
 
     const { target } = evt;
     const button = target.innerText;
-    const lastCharacter = app.display.charAt(app.display.length-1);
-    let containOperationSymbol = false;
 
     // Check if the button press is AC
     if (button === 'AC') {
