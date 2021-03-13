@@ -133,11 +133,11 @@ let app = {
 
       if (app.operation === '+' || app.operation === '-') {
 
-        number2 = number1 * parseFloat(`0.${number2}`);
+        // number2 = number1 * parseFloat(`0.${number2}`);
 
       } else {
 
-        number2 = parseFloat(`0.${number2}`);
+        // number2 = parseFloat(`0.${number2}`);
       }
 
       app.current = `${number2.toFixed(2)}`;
