@@ -133,14 +133,14 @@ let app = {
 
       if (app.operation === '+' || app.operation === '-') {
 
-        // number2 = number1 * parseFloat(`0.${number2}`);
+        number2 = number1 * number2 / 100;
 
       } else {
 
-        // number2 = parseFloat(`0.${number2}`);
+        number2 = number2 / 100;
       }
 
-      app.current = `${number2.toFixed(2)}`;
+      app.current = number2;
     }
 
     if (button === '=') {
