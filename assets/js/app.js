@@ -133,7 +133,6 @@ let app = {
       }
 
       app.current = `${number2.toFixed(2)}`;
-
     }
 
     if (button === '=') {
