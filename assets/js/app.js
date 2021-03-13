@@ -1,5 +1,10 @@
 let app = {
 
+  current: '0',
+  previous: '0',
+  operation: '',
+  result: '',
+
   /**
    * Method executed when launching the application. ( constructor )
    */
@@ -19,22 +24,26 @@ let app = {
   playButtonAndRefreshDisplay: (evt) => {
     
     app.buttonClickManagement(evt);
-    app.displayCurrentOperation();
-    app.displayResult();
+    app.displayCurrent();
+    app.displayPrevious();
   },
 
   /**
    * Method to display current operation.
    */
-  displayCurrentOperation: () => {
-    // TODO
+  displayCurrent: () => {
+    const outputCurrentElement = document.getElementById('output_current');
+
+    outputCurrentElement.innerText = app.result !== '' ? app.result : app.current;
   },
 
   /**
    * Method to display result.
    */
-  displayResult: () => {
-    // TODO
+  displayPrevious: () => {
+    const outputPreviousElement = document.getElementById('output_previous');
+
+    outputPreviousElement.innerText = app.previous;
   },
 
   /**
@@ -46,24 +55,46 @@ let app = {
     const { target } = evt;
     const button = target.innerText;
 
-    // Check if the button press is AC
+    // Check if the button press is AC (Reset all property)
     if (button === 'AC') {
-      // TODO
+      app.current = '0';
+      app.previous = '0';
+      app.operation = '';
+      app.result = '';
     }
 
     // Check if the button press is C
     if (button === 'C') {
-      // TODO
+      app.current = app.current.substring(0, app.current.length -1);
+
+      if (app.current === '') {
+        app.current = '0';
+      }
     }
 
     // Check if the button press is 0-9 or .
     if (parseFloat(button) >= 0 || button === '.') {
-      // TODO
+      
+      if (app.current === '0' && button === '.') {
+        
+        app.current = '0.';
+
+      } else if (!app.current.includes('.') || parseFloat(button) >= 0) {
+
+        app.current = app.current === '0' ? button : app.current + button;
+      }
     }
 
     // Check if the button press is + or - or x or ÷
     if (button === '+' || button === '-' || button === 'x' || button === '÷') {
-      // TODO
+      
+      if (!app.current.includes('+') && !app.current.includes('-') && !app.current.includes('x') && !app.current.includes('÷')) {
+
+        app.previous = `${app.result ? app.result : app.current !== '0' ? app.current : parseFloat(app.previous)} ${button}`;
+        app.operation = button;
+        app.current = '0';
+        app.result = '';
+      }
     }
 
     // Check if the button press is %
@@ -78,6 +109,7 @@ let app = {
 
     // Check if the button press is =
     if (button === '=') {
+      app.previous = `${app.previous} ${app.current}`;
       app.calculate();
     }
   },
@@ -86,7 +118,25 @@ let app = {
    * Method to perform an action based on the equal button.
    */
   calculate: () => {
-    // TODO
+    let number1 = parseFloat(app.previous);
+    let number2 = Number(app.current);
+
+    if (app.operation === '+') {
+
+      app.result = number1 + number2;
+
+    } else if (app.operation === '-') {
+
+      app.result = number1 - number2;
+
+    } else if (app.operation === 'x') {
+
+      app.result = number1 * number2;
+
+    } else if (app.operation === '÷') {
+
+      app.result = number1 / number2;
+    }
   }
 }
 
