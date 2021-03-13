@@ -1,7 +1,7 @@
 let app = {
 
-  current: '0',
-  previous: '0',
+  current: '',
+  previous: '',
   operation: '',
   result: '',
 
@@ -57,8 +57,8 @@ let app = {
 
     // Check if the button press is AC (Reset all property)
     if (button === 'AC') {
-      app.current = '0';
-      app.previous = '0';
+      app.current = '';
+      app.previous = '';
       app.operation = '';
       app.result = '';
     }
@@ -66,22 +66,18 @@ let app = {
     // Check if the button press is C
     if (button === 'C') {
       app.current = app.current.substring(0, app.current.length -1);
-
-      if (app.current === '') {
-        app.current = '0';
-      }
     }
 
     // Check if the button press is 0-9 or .
     if (parseFloat(button) >= 0 || button === '.') {
       
-      if (app.current === '0' && button === '.') {
+      if (app.current === '' && button === '.') {
         
         app.current = '0.';
 
       } else if (!app.current.includes('.') || parseFloat(button) >= 0) {
 
-        app.current = app.current === '0' ? button : app.current + button;
+        app.current = app.current === '' ? button : app.current + button;
       }
     }
 
@@ -90,9 +86,9 @@ let app = {
       
       if (!app.current.includes('+') && !app.current.includes('-') && !app.current.includes('x') && !app.current.includes('÷')) {
 
-        app.previous = `${app.result ? app.result : app.current !== '0' ? app.current : parseFloat(app.previous)} ${button}`;
+        app.previous = `${app.result ? app.result : app.current !== '' ? app.current : parseFloat(app.previous)} ${button}`;
         app.operation = button;
-        app.current = '0';
+        app.current = '';
         app.result = '';
       }
     }
