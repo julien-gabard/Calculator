@@ -95,7 +95,7 @@ let app = {
 
     // Check if the button press is %
     if (button === '%') {
-      // TODO
+      
     }
 
     // Check if the button press is +/-
@@ -105,8 +105,11 @@ let app = {
 
     // Check if the button press is =
     if (button === '=') {
-      app.previous = `${app.previous} ${app.current} =`;
-      app.calculate();
+      
+      if (!app.previous.includes('=')) {
+        app.previous = `${app.previous} ${app.current} =`;
+        app.calculate();
+      }
     }
   },
 
@@ -133,6 +136,13 @@ let app = {
 
       app.result = number1 / number2;
     }
+  },
+
+  /**
+   * Method for calculating with percentage
+   */
+  calculatePercent: () => {
+
   }
 }
 
