@@ -95,7 +95,7 @@ let app = {
 
     // Check if the button press is %
     if (button === '%') {
-      
+      app.calculate(button);
     }
 
     // Check if the button press is +/-
@@ -108,41 +108,53 @@ let app = {
       
       if (!app.previous.includes('=')) {
         app.previous = `${app.previous} ${app.current} =`;
-        app.calculate();
+        app.calculate(button);
       }
     }
   },
 
   /**
    * Method to perform an action based on the equal button.
+   * @param {string} button
    */
-  calculate: () => {
+  calculate: (button) => {
     let number1 = parseFloat(app.previous);
     let number2 = parseFloat(app.current);
 
-    if (app.operation === '+') {
+    if (button === '%' && app.previous) {
 
-      app.result = number1 + number2;
+      if (app.operation === '+' || app.operation === '-') {
 
-    } else if (app.operation === '-') {
+        number2 = number1 * parseFloat(`0.${number2}`);
 
-      app.result = number1 - number2;
+      } else {
 
-    } else if (app.operation === 'x') {
+        number2 = parseFloat(`0.${number2}`);
+      }
 
-      app.result = number1 * number2;
+      app.current = `${number2.toFixed(2)}`;
 
-    } else if (app.operation === '÷') {
-
-      app.result = number1 / number2;
     }
-  },
 
-  /**
-   * Method for calculating with percentage
-   */
-  calculatePercent: () => {
+    if (button === '=') {
 
+      if (app.operation === '+') {
+
+        app.result = number1 + number2;
+  
+      } else if (app.operation === '-') {
+  
+        app.result = number1 - number2;
+  
+      } else if (app.operation === 'x') {
+  
+        app.result = number1 * number2;
+  
+      } else if (app.operation === '÷') {
+  
+        app.result = number1 / number2;
+      }
+    }
   }
 }
 
