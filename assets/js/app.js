@@ -34,7 +34,7 @@ let app = {
   displayCurrent: () => {
     const outputCurrentElement = document.getElementById('output_current');
 
-    outputCurrentElement.innerText = app.result !== '' ? app.result : app.current;
+    outputCurrentElement.innerText = app.result !== '' ? parseFloat(app.result).toFixed(3) : app.current;
   },
 
   /**
