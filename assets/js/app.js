@@ -67,6 +67,8 @@ let app = {
 
     const { target } = evt;
     const button = target.innerText;
+    const lastCharacter = app.display.charAt(app.display.length-1);
+    let containOperationSymbol = false;
 
     // Check if the button press is AC
     if (button === 'AC') {
@@ -104,7 +106,7 @@ let app = {
       }
     }
 
-    // Check if the button press is + or - or x or ÷ or %
+    // Check if the button press is + or - or x or ÷
     if (button === '+' || button === '-' || button === 'x' || button === '÷') {
 
       if (app.result !== '') {
@@ -117,9 +119,24 @@ let app = {
       }
     }
 
+    // Check if the button press is %    
+    for (operator of app.operators) {
+      if (operator === lastCharacter || lastCharacter === '%') {
+        containOperationSymbol = true;
+      }
+    }
+
+    if (button === '%' && !containOperationSymbol) {
+      app.display = app.display + button;
+    }
+
+    // Check if the button press is +/-
+    if (button === '+/-') {
+      // TODO
+    }
+
     // Check if the button press is =
     if (button === '=') {
-
       app.calculate();
     }
   },
@@ -142,7 +159,14 @@ let app = {
       app.calc = app.display;
     }
 
-    app.result = eval(app.calc);
+    if (app.display.includes('%')) {
+
+      // TODO
+
+    } else {
+
+      app.result = eval(app.calc);
+    }
   }
 }
 
