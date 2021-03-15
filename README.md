@@ -13,4 +13,4 @@ Pour la compilation, j'effectue la commande suivante : `./dart-sass/sass assets/
 - **--watch** *permet de rafraîchir automatiquement le fichier style.css*
 
 
-PS : pour l'instant, le projet n'est pas responcive, car je me concentre sur les fonctionnalités. Mes, je prévois de le rendre responcive à la fin.
+PS : pour l'instant, le projet n'est pas responcive. Mes, je prévois de le rendre responcive.
