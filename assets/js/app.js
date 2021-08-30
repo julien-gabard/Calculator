@@ -4,6 +4,7 @@ let app = {
   previous: '',
   operation: '',
   result: '',
+  isModulo: true,
 
   /**
    * Method executed when launching the application. ( constructor )
@@ -129,7 +130,7 @@ let app = {
     let number1 = parseFloat(app.previous);
     let number2 = parseFloat(app.current);
 
-    if (button === '%' && app.previous) {
+    if (button === '%' && app.previous && app.current && app.isModulo) {
 
       if (app.operation === '+' || app.operation === '-') {
 
@@ -139,6 +140,8 @@ let app = {
 
         number2 = number2 / 100;
       }
+
+      app.isModulo = false;
 
       app.current = number2;
     }
@@ -161,6 +164,8 @@ let app = {
   
         app.result = number1 / number2;
       }
+
+      app.isModulo = true;
     }
   }
 }
